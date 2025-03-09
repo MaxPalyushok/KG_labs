@@ -1,4 +1,33 @@
 body {
-    border: 0;
+    height: 100vh;
 }
 
+.container {
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.grid_background {
+    width: 599px;
+    height: 599px;
+    background-image:   
+        linear-gradient(to right, black 2px, transparent 1px), /* Вертикальна вісь */
+        linear-gradient(to bottom, black 2px, transparent 1px), /* Горизонтальна вісь */
+        linear-gradient(to right, transparent 19px, grey 1px),
+        linear-gradient(to bottom, transparent 19px, grey 1px);
+
+    background-size: 599px 599px, 599px 599px, 20px 20px, 20px 20px;
+    background-position: 299px 0px, 0px 299px, 0px 0px, 0px 0px;
+    
+    position: relative;
+    border: 2px solid black;
+}
+
+aside {
+    max-width: 30%;
+}
+
+.control_panel {
+    display: wrap;
+}

@@ -7,6 +7,24 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div class="container">
+        <main>
+            <div class="grid_background">
+                <canvas id="romb" width="600" height="600"></canvas>
+            </div>
+        </main>
+
+        <aside>
+            <div class="control_panel">
+                <input type="text" id="vertical_diag_input" placeholder="довжину по x">
+                <input type="text" id="horizontal_diag_input" placeholder="довжину по y">
+                <input type="text" id="dot_input" placeholder="x,y">
+                <button onclick="draw_romb()">підтвердити</button>
+            </div>
+        </aside>
+
+    </div>
     
+    <script src="scripts.js"></script>
 </body>
 </html>
