@@ -16,10 +16,35 @@
 
         <aside>
             <div class="control_panel">
-                <input type="text" id="vertical_diag_input" placeholder="довжину по x">
-                <input type="text" id="horizontal_diag_input" placeholder="довжину по y">
-                <input type="text" id="dot_input" placeholder="x,y">
-                <button onclick="draw_romb()">підтвердити</button>
+                <div class="control_panel_element">
+                    <label>Горизонтальна діагональ:</label>
+                    <input type="number" id="horizontal_diag_input" placeholder="довжину по x">
+                </div>
+                
+                <div class="control_panel_element">
+                    <label>Вертикальна діагональ:</label>
+                    <input type="number" id="vertical_diag_input" placeholder="довжину по y">
+                </div>
+                
+                <div class="control_panel_element">
+                    <label>Точка перетину:</label>
+                    <input type="text" id="dot_input" placeholder="x,y">
+                </div>
+
+                <div class="control_panel_color">
+                    <label>Колір ромба:</label>
+                    <input type="color" id="romb_color"> 
+                </div>
+
+                <div class="control_panel_color">
+                    <label>Колір кола:</label>
+                    <input type="color" id="circle_color">
+                </div>
+                
+                <div class="buttons">
+                    <button onclick="draw_romb()">Підтвердити</button>
+                    <button onclick="clear_romb()">Очистити</button>    
+                </div>
             </div>
         </aside>
 

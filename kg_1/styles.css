@@ -1,5 +1,7 @@
 body {
     height: 100vh;
+    background-color: #C9DABF;
+    font-family: cursive;
 }
 
 .container {
@@ -11,23 +13,83 @@ body {
 .grid_background {
     width: 599px;
     height: 599px;
-    background-image:   
-        linear-gradient(to right, black 2px, transparent 1px), /* Вертикальна вісь */
-        linear-gradient(to bottom, black 2px, transparent 1px), /* Горизонтальна вісь */
-        linear-gradient(to right, transparent 19px, grey 1px),
-        linear-gradient(to bottom, transparent 19px, grey 1px);
-
     background-size: 599px 599px, 599px 599px, 20px 20px, 20px 20px;
     background-position: 299px 0px, 0px 299px, 0px 0px, 0px 0px;
     
     position: relative;
     border: 2px solid black;
+    background-color: white;
+}
+
+main {
+    margin-top: 3%;
 }
 
 aside {
-    max-width: 30%;
+    margin-top: 5%;
+    max-width: 40%;
+    display: flex;
+    align-items: center;
+    height: 60%;
+    background-color: #808D7C;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+label {
+    color: white;
+    font-weight: bold;
 }
 
 .control_panel {
-    display: wrap;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 15px;
+    background-color: #9CA986;
+    border-radius: 10px;
+}
+
+.control_panel_element {
+    display: flex;
+    justify-content: space-between;
+    color: #5F6F65;
+}
+
+.control_panel_color {
+    display: flex;
+    justify-content: center;
+    gap: 5%;
+}
+
+input {
+    border: 2px solid #5F6F65;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: #C9DABF;
+    color: black;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+button {
+    background-color: #5F6F65;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-family: cursive;
+}
+
+button:hover {
+    background-color: #808D7C;
+}
+
+.control_panel div {
+    margin-top: 5%;
 }
