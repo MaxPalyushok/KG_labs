@@ -13,6 +13,16 @@ function draw_romb() {
     let romb_col = document.getElementById("romb_color").value;
     let circle_col = document.getElementById("circle_color").value;
 
+    if (center.length !== 2 || isNaN(center[0]) || isNaN(center[1])) {
+        alert("Помилка: введіть координати у форматі 'число,число' (наприклад, 1,1)");
+    return;
+    }
+
+    if (length < 0 || height < 0) {
+        alert("Помилка: довжина діагоналей повинна бути додатньою!");
+    return;
+    }
+
     let center_x = parseInt(center[0]) * scale;
     let center_y = parseInt(center[1]) * scale;
 
