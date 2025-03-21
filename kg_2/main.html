@@ -18,6 +18,16 @@
         <aside>
             <div class="control_panel">
                 <div>
+                    <input type="radio" name="method" id="parametric">
+                    <label>параметриний</label>
+                </div>
+
+                <div>
+                    <input type="radio" name="method" id="recursive">
+                    <label>рекурсивний</label>
+                </div>
+
+                <div>
                     <label>точка x</label>
                     <input type="number" id="input-x" placeholder="x">
                 </div>
@@ -30,12 +40,24 @@
                 <div class="control-btns">
                     <button onclick="add()">OK</button>
                     <button onclick="clear_grid()">Clear</button>
+                    <button onclick="draw()">Намалювати</button>
+                </div>
+
+                <div>
+                    <div>
+                        <label>Мінімальний Y</label>
+                        <input type="number" id="min-y">
+                    </div>
+                    <div>
+                        <label>Максимальний Y</label>
+                        <input type="number" id="max-y">
+                    </div>
+
+                    <button onclick="filter_points()">Вивести</button>
                 </div>
             </div>
         </aside>
-    </div>
-
-    
+    </div>    
     <script src="script.js"></script>
 </body>
 </html>

@@ -57,7 +57,7 @@ function draw_grid() {
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
 
-     //мітки на X
+    //мітки на X
     for (let x = -half_length; x <= half_length; x += scale) {
         let labelX = (x / scale).toFixed(0);
         let posX = x + half_length + offset_x;
@@ -84,13 +84,20 @@ function add() {
 
     if (Math.abs(x) > 15 * scale || Math.abs(y) > 15 * scale) {
         alert("Точки не повинні виходити за координатну площину!");
-        console.log("Недопустимі координати:", x, y);
+        return;
+    }
+
+    if (isNaN(x) || isNaN(y))
+    {
+        alert("x та y повинні бути заповнені!!!");
         return;
     }
 
     points.push({ x, y });
-    draw();
+    //draw();
     console.log(points);
+
+    draw_points();
 }
 
 function factorial(n) {
@@ -117,7 +124,24 @@ function bezier_point(t, points) {
     return { x: x + canvas.width / 2, y: -y + canvas.height / 2 };
 }
 
-function draw_bezier() {
+function de_casteljau(t, points) {
+    if (points.length === 1) {
+        return points[0];
+    }
+
+    let new_points = [];
+    for (let i = 0; i < points.length - 1; i++)
+    {
+        let x = (1 - t) * points[i].x + t * points[i + 1].x;
+        let y = (1 - t) * points[i].y + t * points[i + 1].y;
+
+        new_points.push({x, y});
+    }
+
+    return de_casteljau(t, new_points);
+}
+
+function draw_bezier_parametric() {
     if (points.length < 2) return;
     ctx.strokeStyle = "red";
     ctx.lineWidth = 2;
@@ -132,15 +156,69 @@ function draw_bezier() {
     ctx.stroke();
 }
 
+function draw_bezier_recursive() {
+    if (points.length < 2) {
+        return;
+    }
+
+    ctx.strokeStyle = "chocolate";
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+
+    let start = de_casteljau(0, points);
+    ctx.moveTo(start.x + canvas.width / 2, -start.y + canvas.height / 2);
+
+    for (let t = 0.01; t <= 1; t += 0.01) {
+        let p = de_casteljau(t, points);
+        ctx.lineTo(p.x + canvas.width / 2, -p.y + canvas.height / 2);
+    }
+
+    ctx.stroke();
+}
+
 function draw() {
     draw_grid();
-    ctx.fillStyle = "blue";
-    for (let p of points) {
+    
+    if (points.length === 0) {
+        alert("Потрібно ввести хочаб 1 точку!!!");
+    }
+
+    if (document.getElementById("parametric").checked) {
+        draw_bezier_parametric();
+    }
+    else if (document.getElementById("recursive").checked) {
+        draw_bezier_recursive();
+    }
+    else {
+        alert("Виберіть спосіб побудови кривої Безье");
+        draw_points();
+        return;
+    }
+
+    draw_points();
+}
+
+function draw_points () {
+    ctx.fillStyle = "black";
+    let firstPoint = points[0];
+    ctx.beginPath();
+    ctx.arc(firstPoint.x + canvas.width / 2, -firstPoint.y + canvas.height / 2, 5, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Малюємо останню точку
+    let lastPoint = points[points.length - 1];
+    ctx.beginPath();
+    ctx.arc(lastPoint.x + canvas.width / 2, -lastPoint.y + canvas.height / 2, 5, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Для всіх інших точок використаємо інший колір
+    ctx.fillStyle = "blue";  // Встановлюємо синій колір для інших точок
+    for (let i = 1; i < points.length - 1; i++) {
+        let p = points[i];
         ctx.beginPath();
         ctx.arc(p.x + canvas.width / 2, -p.y + canvas.height / 2, 5, 0, Math.PI * 2);
         ctx.fill();
     }
-    draw_bezier();
 }
 
 function clear_grid() {
@@ -148,7 +226,29 @@ function clear_grid() {
     draw_grid();
 }
 
-draw_grid();
+function filter_points() {
+    let min_y = parseFloat(document.getElementById("min-y").value);
+    let max_y = parseFloat(document.getElementById("max-y").value);
+
+    if (isNaN(min_y) || isNaN(max_y)) {
+        alert("Будь ласка, введіть коректні значення для діапазону Y.");
+        return;
+    }
+
+    let filtered_points = points.filter(p => p.y >= min_y * scale && p.y <= max_y * scale);
+
+    // Виведення результату у повідомленні
+    if (filtered_points.length === 0) {
+        alert("Немає точок в заданому діапазоні.");
+    } else {
+        let result = `Точки в діапазоні Y (${min_y}, ${max_y}):\n`;
+        filtered_points.forEach(p => {
+            result += `(${(p.x / scale).toFixed(2)}, ${(p.y / scale).toFixed(2)})\n`;
+        });
+        alert(result);  // Виведення результату у повідомленні
+    }
+}
+
 
 function on_mouse_down(event) {
     let mouseX = event.offsetX - canvas.width / 2;
@@ -174,3 +274,5 @@ function on_mouse_move(event) {
 function on_mouse_up() {
     selected_point = null;
 }
+
+draw_grid();
