@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KG_2</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <div class="container">
+        <main>
+            <div class="grid_background">
+                <canvas id="bezier" width="600" height="600"></canvas>
+            </div>
+        </main>
+        
+        <aside>
+            <div class="control_panel">
+                <div>
+                    <label>точка x</label>
+                    <input type="number" id="input-x" placeholder="x">
+                </div>
+
+                <div>
+                    <label>точка y</label>
+                    <input type="number" id="input-y" placeholder="y">
+                </div>
+
+                <div class="control-btns">
+                    <button onclick="add()">OK</button>
+                    <button onclick="clear_grid()">Clear</button>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    
+    <script src="script.js"></script>
+</body>
+</html>
