@@ -1,5 +1,4 @@
 body {
-    height: 100vh;
     background-color: #C9DABF;
     font-family: cursive;
 }
@@ -22,18 +21,24 @@ body {
 }
 
 main {
-    margin-top: 3%;
+    margin-top: 1%;
 }
 
 aside {
-    margin-top: 5%;
+    margin-top: 1%;
     max-width: 40%;
     display: flex;
     align-items: center;
     height: 60%;
     background-color: #808D7C;
     border-radius: 10px;
-    padding: 20px;
+    padding: 10px;
+}
+
+label {
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
 }
 
 .control_panel {
@@ -43,4 +48,47 @@ aside {
     padding: 15px;
     background-color: #9CA986;
     border-radius: 10px;
+}
+
+input {
+    border: 2px solid #5F6F65;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: #C9DABF;
+    color: black;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+button {
+    background-color: #5F6F65;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-family: cursive;
+    font-size: 14px;
+}
+
+button:hover {
+    background-color: #808D7C;
+}
+
+.control_panel div {
+    margin-top: 2%;
+}
+
+h4 {
+    color: black;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    background-color:#C9DABF;
+    padding: 5px 10px;
+    border-radius: 5px;
 }

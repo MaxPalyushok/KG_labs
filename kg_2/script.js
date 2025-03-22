@@ -94,7 +94,6 @@ function add() {
     }
 
     points.push({ x, y });
-    //draw();
     console.log(points);
 
     draw_points();
@@ -110,7 +109,29 @@ function factorial(n) {
 }
 
 function binomial_coefficient(n, k) {
+    if (k < 0 || k > n) return 0;
     return factorial(n) / (factorial(k) * factorial(n - k));
+}
+
+function calculate_bernstain() {
+    let i = parseInt(document.getElementById("input_i").value);
+    let n = parseInt(document.getElementById("input_n").value);
+    let t = parseFloat(document.getElementById("input_t").value);
+
+    if (isNaN(i) || isNaN(t) || isNaN(n) || i < 0 || n < 0 || t < 0 || t > 1) {
+        alert("Будь ласка, введіть коректні значення (i ≥ 0, 0 ≤ t ≤ 1, n ≥ 0).");
+        return;
+    }
+
+    if (n < i) {
+        alert("n повинне бути більшим або рівним ніж i");
+        return;
+    }
+    
+    let result = binomial_coefficient(n, i) * Math.pow(t, i) * Math.pow(1 - t, n - i);
+
+    alert(`B_${i},${n}(${t}) = ${result}`);
+    return result;
 }
 
 function bezier_point(t, points) {
@@ -205,14 +226,12 @@ function draw_points () {
     ctx.arc(firstPoint.x + canvas.width / 2, -firstPoint.y + canvas.height / 2, 5, 0, Math.PI * 2);
     ctx.fill();
 
-    // Малюємо останню точку
     let lastPoint = points[points.length - 1];
     ctx.beginPath();
     ctx.arc(lastPoint.x + canvas.width / 2, -lastPoint.y + canvas.height / 2, 5, 0, Math.PI * 2);
     ctx.fill();
 
-    // Для всіх інших точок використаємо інший колір
-    ctx.fillStyle = "blue";  // Встановлюємо синій колір для інших точок
+    ctx.fillStyle = "blue";
     for (let i = 1; i < points.length - 1; i++) {
         let p = points[i];
         ctx.beginPath();
@@ -235,9 +254,13 @@ function filter_points() {
         return;
     }
 
+    if (min_y > max_y) {
+        alert("Максимальна точка повинна бути більшою за мінімальну!");
+        return;
+    }
+
     let filtered_points = points.filter(p => p.y >= min_y * scale && p.y <= max_y * scale);
 
-    // Виведення результату у повідомленні
     if (filtered_points.length === 0) {
         alert("Немає точок в заданому діапазоні.");
     } else {
@@ -245,7 +268,7 @@ function filter_points() {
         filtered_points.forEach(p => {
             result += `(${(p.x / scale).toFixed(2)}, ${(p.y / scale).toFixed(2)})\n`;
         });
-        alert(result);  // Виведення результату у повідомленні
+        alert(result);
     }
 }
 
