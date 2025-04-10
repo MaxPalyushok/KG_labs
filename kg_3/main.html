@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KG_3</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <div class="container">
+        <main>
+            <div class="grid_background">
+                <canvas id="fractal" width="600" height="600"></canvas>
+            </div>
+        </main>
+        
+        <aside>
+            <div class="control_panel">
+                <div class="fractal_type">
+                    <div class="minkowski_line">
+                        <label>Minkowski Line</label>
+                        <input type="radio" id="minkowski_line" name="fractal_type" value="minkowski_line" checked>
+                    </div>
+                    <div class="minkowski_square">
+                        <label>Minkowski Square</label>
+                        <input type="radio" id="minkowski_square" name="fractal_type" value="minkowski_square">
+                    </div>
+                    <div class="cotangens">
+                        <label>Cotangens</label>
+                        <input type="radio" id="cotangens" name="fractal_type" value="cotangens">
+                    </div>
+                </div>
+                <div class="fractal_iteraction">
+                    <label for="">Iteration:</label>
+                    <input type="range" name="size" min="0" max="5" value="3" step="1">
+                </div>
+            </div>
+        </aside>
+    </div>    
+    <script src="script.js"></script>
+</body>
+</html>
