@@ -49,3 +49,35 @@ label {
     background-color: #9CA986;
     border-radius: 10px;
 }
+
+h4 {
+    text-align: center;
+}
+
+h5 {
+    text-align: center;
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+button {
+    background-color: #5F6F65;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-family: cursive;
+    font-size: 14px;
+}
+
+button:hover {
+    background-color: #808D7C;
+}
+
+.button_group {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 2%;    
+}

@@ -18,22 +18,70 @@
         <aside>
             <div class="control_panel">
                 <div class="fractal_type">
-                    <div class="minkowski_line">
-                        <label>Minkowski Line</label>
-                        <input type="radio" id="minkowski_line" name="fractal_type" value="minkowski_line" checked>
+                    <h4>Choose fractal type</h4>
+                    <div class="radio_btn">
+                        <div class="minkowski_line">
+                            <label>Minkowski Line</label>
+                            <input type="radio" id="minkowski_line" name="fractal_type" value="minkowski_line" checked>
+                        </div>
+                        <div class="minkowski_square">
+                            <label>Minkowski Square</label>
+                            <input type="radio" id="minkowski_square" name="fractal_type" value="minkowski_square">
+                        </div>
+                        <div class="cotangens">
+                            <label>Ctg²(z) + c</label>
+                            <input type="radio" id="cotangens" name="fractal_type" value="cotangens">
+                        </div>
                     </div>
-                    <div class="minkowski_square">
-                        <label>Minkowski Square</label>
-                        <input type="radio" id="minkowski_square" name="fractal_type" value="minkowski_square">
-                    </div>
-                    <div class="cotangens">
-                        <label>Cotangens</label>
-                        <input type="radio" id="cotangens" name="fractal_type" value="cotangens">
+                    <div class="button_group">
+                        <button id="draw_button">Draw fractal</button>
+                        <button id="redraw_button">Redraw fractal</button>
+                        <button id="save_img">Save image</button>
                     </div>
                 </div>
-                <div class="fractal_iteraction">
-                    <label for="">Iteration:</label>
-                    <input type="range" name="size" min="0" max="5" value="3" step="1">
+                
+                <div class="minkovski_controls">
+                    <h4>Minkowski controls</h4>
+                    <div class="inside">
+                        <label>Color inside fractal</label>
+                        <input type="color" id="inside_color" value="#00b1a1">
+                    </div>
+                    <div class="fractal_border">
+                        <label>Color of fractal border</label>
+                        <input type="color" id="border_color" value="#a123f4">
+                    </div>
+                    <div class="minkowski_iteration">
+                        <label>Iteration:</label>
+                        <span id="minkowski_value">3</span>
+                        <input type="range" name="minkowski_size" min="0" max="5" value="3" step="1">
+                    </div>
+                </div>
+
+                <div class="cotangens_controls">
+                    <h4>Cotangens controls</h4>
+                    <div class="cot_iteration">
+                        <label>Iteration:</label>
+                        <span id="cot_value">15</span>
+                        <input type="range" name="cot_size" min="1" max="20" value="15" step="1">
+                    </div>
+                    <div class="escape_radius">
+                        <label>Escape radius</label>
+                        <span id="escape_radius_value">10</span>
+                        <input type="range" name="escape_radius" min="2" max="20" value="10" step="1">
+                    </div>
+                    <div class="c_value">
+                        <h5>C Value</h5>
+                        <div class="real_value">
+                            <label>Real part</label>
+                            <span id="real_c_value">-0.6</span>
+                            <input type="range" name="real_c" min="-2" max="2" value="-0.6" step="0.05">
+                        </div>
+                        <div class="img_value">
+                            <label>Imagin part</label>
+                            <span id="img_c_value">0.4</span>
+                            <input type="range" name="img_c" min="-2" max="2" value="0.4" step="0.05">
+                        </div>
+                    </div>
                 </div>
             </div>
         </aside>
