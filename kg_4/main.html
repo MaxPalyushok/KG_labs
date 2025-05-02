@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KG_4</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+        
+    <div class="container">
+        <div class="controls">
+            <div class="control-group">
+                <h2>Image Upload</h2>
+                <input type="file" id="imageInput" accept="image/*">
+            </div>
+            
+            <div class="control-group">
+                <h2>Color Space Conversions</h2>
+                <button id="convertToCMYK">Convert to CMYK</button>
+                <button id="convertToXYZ">Convert to XYZ</button>
+                <button id="convertToRGB">Convert to RGB</button>
+                <button id="compareImages">Compare Images</button>
+            </div>
+            
+            <div class="control-group">
+                <h2>Color Modifications</h2>
+                <div class="modification">
+                    <label for="yellowModifier">Modify Yellow:</label>
+                    <input type="range" id="yellowModifier" min="0" max="200" value="100">
+                    <span id="yellowValue">100%</span>
+                </div>
+                
+                <div class="modification">
+                    <label for="saturationModifier">Modify Saturation:</label>
+                    <input type="range" id="saturationModifier" min="0" max="200" value="100">
+                    <span id="saturationValue">100%</span>
+                </div>
+                <button id="applyModification">Apply to Whole Image</button>
+                <button id="applyToSelection">Apply to Selection</button>
+                <button id="resetSelection">Reset Selection</button>
+            </div>
+            
+            <div class="control-group">
+                <h2>Save Image</h2>
+                <button id="saveImage">Save Current Image</button>
+            </div>
+        </div>
+        
+        <div class="image-container">
+            <div class="canvas-wrapper">
+                <canvas id="imageCanvas"></canvas>
+                <canvas id="selectionCanvas"></canvas>
+            </div>
+            
+            <div class="pixel-info">
+                <h3>Pixel Color Information</h3>
+                <div id="pixelInfo">
+                    <p>Click on the image to see pixel color values</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="colorConversion.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
