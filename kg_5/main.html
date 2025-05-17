@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Рух фігури на площині</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="content-wrapper">
+            <div class="canvas-container">
+                <canvas id="coordinateCanvas" width="800" height="600"></canvas>
+            </div>
+            
+            <div class="right-panel">
+                <div class="input-section">
+                    <div class="input-group">
+                        <h2>Введення координат трикутника</h2>
+                        <div class="form-group">
+                            <label for="x1">Перша вершина основи (x1, y1):</label>
+                            <input type="number" id="x1" placeholder="x1" value="-2">
+                            <input type="number" id="y1" placeholder="y1" value="-2">
+                        </div>
+                        <div class="form-group">
+                            <label for="x2">Друга вершина основи (x2, y2):</label>
+                            <input type="number" id="x2" placeholder="x2" value="2">
+                            <input type="number" id="y2" placeholder="y2" value="-2">
+                        </div>
+                        <div class="form-group">
+                            <label for="height">Довжина висоти до основи:</label>
+                            <input type="number" id="height" placeholder="висота" min="0" value="3">
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <h2>Параметри відображення</h2>
+                        <div class="form-group">
+                            <label for="A">Коефіцієнти прямої Ax+By+C=0:</label>
+                            <input type="number" id="A" placeholder="A" value="1">
+                            <input type="number" id="B" placeholder="B" value="1">
+                            <input type="number" id="C" placeholder="C" value="0">
+                        </div>
+                        <div class="form-group">
+                            <label for="shift-x">Зсув (dx, dy):</label>
+                            <input type="number" id="shift-x" placeholder="dx" value="5" step="0.5">
+                            <input type="number" id="shift-y" placeholder="dy" value="5" step="0.5">
+                        </div>
+                        <div class="form-group">
+                            <label for="unit-length">Довжина одиничного відрізку: <span id="unit-length-value">50</span></label>
+                            <input type="range" id="unit-length" min="10" max="100" value="50" step="5">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="controls">
+                    <button id="draw-btn">Намалювати трикутник</button>
+                    <button id="start-btn">Почати рух</button>
+                    <button id="stop-btn" disabled>Зупинити рух</button>
+                    <button id="continue-btn">Продовжити анімацію</button>
+                    <button id="save-matrix-btn">Зберегти матрицю</button>
+                    <button id="save-image-btn">Зберегти зображення</button>
+                    <button id="save-initial-btn">Зберегти початкове положення</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="matrix.js"></script>
+    <script src="scripts.js"></script>
+</body>
+</html>
